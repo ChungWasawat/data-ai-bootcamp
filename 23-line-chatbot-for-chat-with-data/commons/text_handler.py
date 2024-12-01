@@ -61,6 +61,18 @@ def handle_text_by_keyword(event, line_bot_api):
                 messages=[TextMessage(text="$ LINE emoji $", emojis=emojis)],
             )
         )
+
+    elif text == "emoji":
+        emojis = [
+            Emoji(index=0, product_id="5ac1bfd5040ab15980c9b435", emoji_id="004"),
+            Emoji(index=13, product_id="5ac1bfd5040ab15980c9b435", emoji_id="005"),
+        ]
+        line_bot_api.reply_message(
+            ReplyMessageRequest(
+                reply_token=event.reply_token,
+                messages=[TextMessage(text="$ LINE emoji $", emojis=emojis)],
+            )
+        )
     
     elif text == "quota":
         quota = line_bot_api.get_message_quota()

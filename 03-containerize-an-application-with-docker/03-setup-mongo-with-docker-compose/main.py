@@ -8,7 +8,7 @@ import pendulum
 # เชื่อมต่อ MongoDB
 client = MongoClient("mongodb://mongo:mg1234@localhost:27017/")
 db = client["retail"]
-product_col = db["product_attributes"]
+product_col = db["product_attributes"] # collection ~ table in sql
 
 # สร้าง Faker object
 fake = Faker()

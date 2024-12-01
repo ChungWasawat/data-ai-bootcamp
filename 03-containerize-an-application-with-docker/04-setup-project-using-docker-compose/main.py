@@ -9,11 +9,13 @@ from sqlalchemy import create_engine
 # run: python main.py
 
 # เชื่อมต่อ MongoDB
+# "mongodb://username:password@ip_or_name_in_docker:port"
 client = MongoClient("mongodb://mongo:mg1234@mongodb:27017/")
 db = client["retail"]
 product_col = db["product_attributes"]
 
 # สร้าง connection string สำหรับ PostgreSQL
+# "postgresql;//username:password:ip_or_name_in_docker:port/db"
 engine = create_engine("postgresql://postgres:pg1234@postgres:5432/postgres")
 
 # สร้าง Faker object

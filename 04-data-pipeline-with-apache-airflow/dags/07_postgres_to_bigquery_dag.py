@@ -18,7 +18,7 @@ default_args = {
 }
 
 PROJECT_ID = "dataaibootcamp"
-DATASET_ID = "dataai_name_yyyy"
+DATASET_ID = "dataai_chung_9999"
 
 def extract(**context):
     postgres_hook = PostgresHook(postgres_conn_id='pg_conn')
@@ -77,7 +77,7 @@ with DAG(
         task_id='create_table',
         project_id=PROJECT_ID,
         dataset_id=DATASET_ID,
-        table_id='customer',
+        table_id='customers',
         schema_fields=[
             {'name': 'customer_id', 'type': 'STRING', 'mode': 'REQUIRED'},
             {'name': 'first_name', 'type': 'STRING', 'mode': 'NULLABLE'},

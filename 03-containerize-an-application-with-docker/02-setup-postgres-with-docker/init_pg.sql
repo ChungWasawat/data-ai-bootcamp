@@ -1,3 +1,4 @@
+-- Active: 1732941727013@@localhost@5432@postgres@public
 CREATE TABLE customers (
     customer_id UUID PRIMARY KEY,
     name VARCHAR(255),

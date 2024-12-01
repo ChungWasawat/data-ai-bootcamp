@@ -17,7 +17,7 @@ default_args = {
 }
 
 PROJECT_ID = "dataaibootcamp"
-BUCKET_NAME = "dataai-name-yyyy"
+BUCKET_NAME = "dataai-chung-9999"
 
 
 # สร้างข้อมูลตัวอย่าง

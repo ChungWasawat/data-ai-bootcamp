@@ -13,7 +13,7 @@ default_args = {
     'start_date': datetime(2024, 1, 1)
 }
 PROJECT_ID = "dataaibootcamp"
-DATASET_ID = "dataai_name_yyyy"
+DATASET_ID = "dataai_chung_9999"
 
 with DAG(
     '06_bigquery_simple_dag',

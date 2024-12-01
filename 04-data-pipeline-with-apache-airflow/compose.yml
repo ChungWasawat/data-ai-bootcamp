@@ -63,7 +63,7 @@ x-airflow-common:
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     # AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
     # AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
-    AIRFLOW__CORE__FERNET_KEY: 'IaSCLr77RS2EJXIhd1o7xCxpzSNLtfdxXTRv-4cBXIo='
+    AIRFLOW__CORE__FERNET_KEY: 'IaSCLr77RS2EJXIhd1o7xCxpzSNLtfdxXTRv-4cBXIo=' #should be in environment, can gen random from website
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
@@ -89,6 +89,7 @@ x-airflow-common:
       condition: service_healthy
 
 services:
+  # meta store
   postgres:
     image: postgres:13
     environment:

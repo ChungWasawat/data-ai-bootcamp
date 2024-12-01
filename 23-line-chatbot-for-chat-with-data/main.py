@@ -79,8 +79,46 @@ def handle_image_message(event):
         ShowLoadingAnimationRequest(chat_id=event.source.user_id)
     )
 
-    # message_content = line_bot_blob_api.get_message_content(message_id=event.message.id)
+    message_content = line_bot_blob_api.get_message_content(message_id=event.message.id)
     
+###### GEMINI IMAGE UNDERSTANDING #######################################################
+    upload_blob_from_memory(
+        contents=message_content,
+        user_id=event.source.user_id,
+        message_id=event.message.id,
+        type="image",
+    )
+
+    image_description = gemini_describe_image(
+        user_id=event.source.user_id,
+        message_id=event.message.id,
+    )
+
+    if image_description:
+        line_bot_api.push_message(
+            PushMessageRequest(
+                to=event.source.user_id,
+                messages=[TextMessage(text=str(image_description))],
+            )
+        )
+##########################################################################################
+##########################################################################################
+
+
+###### VERTEXT SEARCH FROM IMAGE  ##########
+
+    response_dict = vertex_search_retail_products(
+        image_description["product_description"]
+    )
+    build_flex_carousel_message(
+        line_bot_api=line_bot_api,
+        event=event,
+        response_dict=response_dict,
+        search_query=image_description["product_description"],
+        additional_explain=image_description["explaination"],
+    )
+##########################################################################################   
+
     line_bot_api.reply_message(
         ReplyMessageRequest(
             reply_token=event.reply_token, messages=[TextMessage(text="Thank you for sending image")]
